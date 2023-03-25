@@ -18,7 +18,8 @@ const BookShow = ({ book, onDelete }) => {
   if (showEdit) content = <BookEdit onUpdate={handleUpdate} bookName={title} />;
   return (
     <div className="book-show">
-      {content}
+      <img src={`https://picsum.photos/seed/${book.id}/300/200`} alt="books" />
+      <div>{content}</div>
       <div className="action">
         <button className="edit" onClick={handleEditClick}>
           Edit

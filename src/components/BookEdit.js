@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const BookEdit = ({ onUpdate, bookName }) => {
   const [title, setTitle] = useState(bookName);
+  const inputRef = useRef(null);
+  useEffect(() => inputRef.current.focus(), []);
   const handleSubmit = (event) => {
     event.preventDefault();
     onUpdate(title);
@@ -18,6 +20,7 @@ const BookEdit = ({ onUpdate, bookName }) => {
         type="text"
         onChange={handleChange}
         className="input"
+        ref={inputRef}
       />
       <button className="button is-primary">Save</button>
     </form>
