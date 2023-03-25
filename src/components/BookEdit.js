@@ -1,12 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 
-const BookEdit = ({ onUpdate, bookName }) => {
-  const [title, setTitle] = useState(bookName);
+const BookEdit = ({ onUpdate, book }) => {
+  const [title, setTitle] = useState(book.title);
   const inputRef = useRef(null);
   useEffect(() => inputRef.current.focus(), []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    onUpdate(title);
+    onUpdate(book.id, title);
   };
   const handleChange = (event) => {
     setTitle(event.target.value);

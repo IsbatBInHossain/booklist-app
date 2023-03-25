@@ -14,21 +14,23 @@ const App = () => {
     setBooks(updatedBooks);
   };
 
+  const handleEdit = (id, newTitle) => {
+    const updatedBooks = books.map((book) => {
+      if (book.id === id) {
+        return { ...book, title: newTitle };
+      }
+      return book;
+    });
+    setBooks(updatedBooks);
+  };
+
   return (
     <div className="app">
       <h1>Reading List</h1>
-      <BookList books={books} onDelete={deleteBooksById} />
+      <BookList books={books} onDelete={deleteBooksById} onEdit={handleEdit} />
       <BookCreate onCreate={handleCreateBook} />
     </div>
   );
 };
 
 export default App;
-
-// books.map((book, index) => {
-//     if (book.id === id) {
-//       return [books.slice(0, index), books.slice(index + 1)];
-//     }
-//     return books;
-//   });
-//   setBooks(updatedBooks);
