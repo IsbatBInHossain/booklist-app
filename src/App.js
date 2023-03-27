@@ -12,7 +12,6 @@ const App = () => {
     fetchBooks();
   }, []);
   const handleCreateBook = async (title) => {
-    // setBooks([...books, { id: Math.floor(Math.random() * 9999), title }]);
     const response = await axios.post(URL, {
       title,
     });
