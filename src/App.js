@@ -4,14 +4,10 @@ import BookList from "./components/BookList";
 import useBooksContext from "./hooks/use-books-context";
 
 const App = () => {
-  const { fetchBooks } = useBooksContext();
-  useEffect(
-    () => {
-      fetchBooks();
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
+  const { memorizedFetchBooks } = useBooksContext();
+  useEffect(() => {
+    memorizedFetchBooks();
+  }, [memorizedFetchBooks]);
 
   return (
     <div className="app">
