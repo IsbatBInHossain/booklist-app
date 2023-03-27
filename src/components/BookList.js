@@ -1,8 +1,10 @@
 import BookShow from "./BookShow";
+import useBooksContext from "../hooks/use-books-context";
 
-const BookList = ({ books, onDelete, onEdit }) => {
+const BookList = () => {
+  const { books } = useBooksContext();
   const renderBooks = books.map((book) => (
-    <BookShow key={book.id} book={book} onDelete={onDelete} onEdit={onEdit} />
+    <BookShow key={book.id} book={book} />
   ));
   return <div className="book-list">{renderBooks}</div>;
 };

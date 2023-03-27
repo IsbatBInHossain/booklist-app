@@ -1,13 +1,16 @@
 import { useState, useRef, useEffect } from "react";
+import useBooksContext from "../hooks/use-books-context";
 
 const BookEdit = ({ onUpdate, book }) => {
   const [title, setTitle] = useState(book.title);
+  const { handleEdit } = useBooksContext();
   const inputRef = useRef(null);
   useEffect(() => inputRef.current.focus(), []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onUpdate(book.id, title);
+    onUpdate();
+    handleEdit(book.id, title);
   };
   const handleChange = (event) => {
     setTitle(event.target.value);
